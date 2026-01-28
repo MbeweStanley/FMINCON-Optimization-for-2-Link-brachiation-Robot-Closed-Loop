@@ -94,60 +94,11 @@ constraintfunction = @(p) Constraint_3D_WCW(p,param);
 problem = createOptimProblem('fmincon','x0',pinput_0,'objective',costfunction,'nonlcon',constraintfunction,...
     'lb',LB,'ub',UB,'options',options);
 
-% disp('Start Optimisation (3D closed-loop, worst-case wind)');
-% xmin = fmincon(problem);
-% disp('Optimal decision vector:');
-% disp('Solution (xmin):');
-% disp(xmin);
-
-xmin=[0.8803
-    0.5000
-    0.5000
-   -0.6809
-   -1.0228
-   -0.1185
-   -0.4862
-   -0.3572
-    0.0588
-   -0.1142
-    0.0546
-    0.1045
-   -0.0395
-    0.1928
-    0.6992
-    0.2603
-    0.5794
-    0.6809
-         0
-   -0.1923
-    0.1085
-    0.2372
-    0.2746
-    0.0528
-    0.3192
-    0.6623
-    0.3454
-    0.5163
-    0.6805
-    0.5918
-    0.8618
-    0.8001
-    0.8457
-   -1.7853
-   -1.2076
-   -0.7193
-   -0.9961
-   -0.6745
-   -0.3508
-   -0.1996
-    0.0065
-    0.4357
-    0.1264
-    1.0402
-    1.1072
-    1.5082
-    1.4886
-    1.7853]';
+disp('Start Optimisation (3D closed-loop, worst-case wind)');
+xmin = fmincon(problem);
+disp('Optimal decision vector:');
+disp('Solution (xmin):');
+disp(xmin);
 
 
 %% post-check constraints on solution
@@ -181,6 +132,7 @@ fprintf('Final joint angles  : [%.6f, %.6f, %.6f]\n', EE_landed);
 
 %% Optional: animate or inspect solution with your Animation_3D function
 [time, theta1x, theta1y, theta1z, theta2, torque_elbow, torque_wristy] = Animation_3D(xmin, param);
+
 
 
 
